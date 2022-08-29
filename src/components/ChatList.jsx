@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './ChatList.module.scss';
 
+import { useDispatch } from 'react-redux';
+import { fetchUsers, setUsers } from '../store/usersSlice';
+
 function ChatList() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchUsers)
+  }, [dispatch])
+
   return (
     <div className={styles.chatlist}>
       <div className={styles.chatlist__header}>
