@@ -2,7 +2,11 @@ import React from 'react';
 import styles from './ChatFeed.module.scss';
 import sendIcon from '../assets/send.png';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 function ChatFeed() {
+  const currentChat = useSelector(state => state.userData.currentChat)
+  console.log(currentChat);
   return (
     <div className={styles.chatfeed}>
       <div className={styles.chatfeed__header}>

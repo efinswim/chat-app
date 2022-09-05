@@ -53,20 +53,25 @@
 
       &_user {
         display: flex;
+        max-width: 20rem;
 
         div {
           align-self: baseline;
           margin-left: 1rem;
+
           p {
             margin: 0;
             padding-bottom: 2px;
             font-weight: bold;
+            
 
             &:last-of-type {
               font-weight: normal;
+              
             }
           }
         }
+
 
         img {
           width: 2.5rem;
@@ -79,6 +84,7 @@
       p {
         align-self: baseline;
       }
+      
     }
 
     &::-webkit-scrollbar {

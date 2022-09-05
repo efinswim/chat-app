@@ -2,19 +2,17 @@ import React, { useEffect } from 'react';
 import styles from './ChatList.module.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsers } from '../store/usersSlice';
+import { fetchUsers } from '../store/userSlice';
 
 function ChatList() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userData.userList);
-  const status = useSelector((state) => state.userData.status);
-
-  console.log(users, 'user<<')
-
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+
+  
 
   return (
     <div className={styles.chatlist}>
@@ -28,15 +26,15 @@ function ChatList() {
       <div className={styles.chatlist__list}>
         {
           users.map((user) => (
-            <div className={styles.chatlist__list_item}>
+            <div key={user.id} className={styles.chatlist__list_item} onClick={a => console.log(afterEach)}>
               <div className={styles.chatlist__list_item_user}>
                 <img src={user.avatar} alt="Boris Johnson" />
                 <div>
                   <p>{user.name}</p>
-                  <p>Slava Ukraine!!!!!!!!!</p>
+                  <p>{user.messages.at(-1).value}</p>
                 </div>
               </div>
-              <p>Jun 12, 2022</p>
+              <p>{user.messages.at(-1).date}</p>
             </div>
           ))
         }

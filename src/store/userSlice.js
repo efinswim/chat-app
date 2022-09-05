@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   userList: [],
+  currentChat: null,
   status: null,
   error: null,
 };
