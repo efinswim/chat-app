@@ -3,10 +3,21 @@ import styles from './ChatFeed.module.scss';
 import sendIcon from '../assets/send.png';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 function ChatFeed() {
-  const currentChat = useSelector(state => state.userData.currentChat)
-  console.log(currentChat);
+  const [currentUser, setCurrentUser] = useState(null);
+  const currentChat = useSelector((state) => state.userData.currentChat);
+  const users = useSelector((state) => state.userData.userList);
+
+  useEffect(() => {
+    setCurrentUser(getUserById(currentChat));
+  }, [currentChat]);
+
+  const getUserById = (id) => users.find((item) => item.id === id);
+  console.log(currentUser, 'currentUser');
+
   return (
     <div className={styles.chatfeed}>
       <div className={styles.chatfeed__header}>

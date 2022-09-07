@@ -29,7 +29,11 @@ export const fetchUsers = createAsyncThunk(
 const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentChat(state, action) {
+      state.currentChat = action.payload
+    }
+  },
   extraReducers: {
     [fetchUsers.pending]: (state, action) => {
       state.status = 'LOADING';
@@ -46,6 +50,6 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setUsers } = usersSlice.actions;
+export const { setUsers, setCurrentChat } = usersSlice.actions;
 
 export default usersSlice.reducer;

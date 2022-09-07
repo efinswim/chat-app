@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './ChatList.module.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsers } from '../store/userSlice';
+import { fetchUsers, setCurrentChat } from '../store/userSlice';
 
 function ChatList() {
   const dispatch = useDispatch();
@@ -12,6 +12,8 @@ function ChatList() {
     dispatch(fetchUsers());
   }, [dispatch]);
 
+  const setCurrentUser = (id) => dispatch(setCurrentChat(id))
+  
   
 
   return (
@@ -26,7 +28,7 @@ function ChatList() {
       <div className={styles.chatlist__list}>
         {
           users.map((user) => (
-            <div key={user.id} className={styles.chatlist__list_item} onClick={a => console.log(afterEach)}>
+            <div key={user.id} className={styles.chatlist__list_item} onClick={() => setCurrentUser(user.id)}>
               <div className={styles.chatlist__list_item_user}>
                 <img src={user.avatar} alt="Boris Johnson" />
                 <div>
